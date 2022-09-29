@@ -45,18 +45,35 @@ const quotes = [
 
 /*
  This function will generate a random number between 0 and length of quotes array.
- It then will select randomQuote from our array and return the object
+ It then will select random from our array and return the object
 */
 function getRandomQuote() {
-  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  return randomQuote;
+  let randomChose = quotes[Math.floor(Math.random() * quotes.length)];
+  return randomChose;
 };
 
-/***
- * `printQuote` function
-***/
+/*
+ This function will get a random quote object from the quotes array.
+ Then assemble a string of HTML and quote properties; to update the HTML to include that string.
+ It will check if properties are present before adding to the HTML string
+*/
+function printQuote() {
+  let randomQuote = getRandomQuote();
+  let html = ' ';
+  html += `
+    <p class="quote">${randomQuote.quote}</p>
+    <p class="source"><strong>${randomQuote.source}</strong>`
 
+  if ( randomQuote.citation ) {
+    html += `<span class="citation"><em>${randomQuote.citation}</em></span>`;
+  }
+  if ( randomQuote.year ) {
+    html += `<span class="year">${randomQuote.year}</span>`;
+  }
+  html += `</p>`
 
+  document.getElementById('quote-box').innerHTML = html;
+};
 
 /***
  * click event listener for the print quote button
