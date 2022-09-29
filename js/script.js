@@ -15,7 +15,8 @@ const quotes = [
     quote: "You must be the change you wish to see in the world.",
     source: "Mahatma Gandhi",
     citation: "speech",
-    year: 1913
+    year: 1913,
+    tag: "Historical"
   },
   {
     quote: "There is some good in this world, and it’s worth fighting for.",
@@ -27,7 +28,8 @@ const quotes = [
     quote: "I am not afraid of storms, for I am learning how to sail my ship.",
     source: "Louisa May Alcott",
     citation: "Little Women",
-    year: 1868
+    year: 1868,
+    tag: "Inspirational"
   },
   {
     quote: "There is no greater agony than bearing an untold story inside you.",
@@ -39,7 +41,15 @@ const quotes = [
     quote: "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
     source: "John Keating",
     citation: "Dead Poets Society",
-    year: 1989
+    year: 1989,
+    tag: "Motivational"
+  },
+  {
+    quote: "I can't go out tonight. I'm sick.",
+    source: "Karen Smith",
+    citation: "Mean Girls",
+    year: 2004,
+    tag: "Funny"
   }
 ];
 
@@ -60,9 +70,9 @@ function getRandomQuote() {
 function printQuote() {
   let randomQuote = getRandomQuote();
   let html = ' ';
-  html += `
-    <p class="quote">${randomQuote.quote}</p>
-    <p class="source"><strong>${randomQuote.source}</strong>`
+  html +=
+    `<p class="quote">${randomQuote.quote}</p>
+     <p class="source"><strong>${randomQuote.source}</strong>`
 
   if ( randomQuote.citation ) {
     html += `<span class="citation"><em>${randomQuote.citation}</em></span>`;
@@ -70,10 +80,24 @@ function printQuote() {
   if ( randomQuote.year ) {
     html += `<span class="year">${randomQuote.year}</span>`;
   }
+  if ( randomQuote.tag ) {
+    html += `<span class="tag">(${randomQuote.tag})</span>`;
+  }
   html += `</p>`
 
   document.getElementById('quote-box').innerHTML = html;
 };
+
+/*
+  This function will updates the background color to a random color.
+  When a new quote prints to the page, the background color changes.
+  Used https://stackoverflow.com/questions/197748/how-do-i-change-the-background-color-with-javascript as reference
+*/
+function randomColorBackground() {
+  let colors = [ "DDA0DD", "DAA520", "F08080", "98FB98", "FFEBCD", "87CEEB", "A9A9A9", "3CB371" ]
+  return colors[Math.floor(Math.random() * colors.length)]
+};
+  document.body.style.backgroundColor = randomColorBackground();
 
 /***
  * click event listener for the print quote button
