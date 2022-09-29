@@ -63,11 +63,22 @@ function getRandomQuote() {
 };
 
 /*
+  This function will updates the background color to a random color.
+  When a new quote prints to the page, the background color changes.
+  Used https://stackoverflow.com/questions/197748/how-do-i-change-the-background-color-with-javascript as reference
+*/
+function randomColorBackground() {
+  let colors = [ "#DDA0DD", "#DAA520", "#F08080", "#98FB98", "#FFEBCD", "#87CEEB", "#A9A9A9", "#3CB371" ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+
+/*
  This function will get a random quote object from the quotes array.
  Then assemble a string of HTML and quote properties; to update the HTML to include that string.
  It will check if properties are present before adding to the HTML string
 */
 function printQuote() {
+  document.body.style.backgroundColor = randomColorBackground();
   let randomQuote = getRandomQuote();
   let html = ' ';
   html +=
@@ -88,16 +99,8 @@ function printQuote() {
   document.getElementById('quote-box').innerHTML = html;
 };
 
-/*
-  This function will updates the background color to a random color.
-  When a new quote prints to the page, the background color changes.
-  Used https://stackoverflow.com/questions/197748/how-do-i-change-the-background-color-with-javascript as reference
-*/
-function randomColorBackground() {
-  let colors = [ "DDA0DD", "DAA520", "F08080", "98FB98", "FFEBCD", "87CEEB", "A9A9A9", "3CB371" ]
-  return colors[Math.floor(Math.random() * colors.length)]
-};
-  document.body.style.backgroundColor = randomColorBackground();
+//Rotate color and quote on an interval of 5 seconds; referenece: w3schools
+setInterval(printQuote, 5000);
 
 /***
  * click event listener for the print quote button
