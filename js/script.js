@@ -54,8 +54,8 @@ const quotes = [
 ];
 
 /*
- This function will generate a random number between 0 and length of quotes array.
- It then will select random from our array and return the object
+  This function will generate a random number between 0 and length of quotes array.
+  It then will select random from our array and return the object
 */
 function getRandomQuote() {
   let randomChose = quotes[Math.floor(Math.random() * quotes.length)];
@@ -73,9 +73,9 @@ function randomColorBackground() {
 };
 
 /*
- This function will get a random quote object from the quotes array.
- Then assemble a string of HTML and quote properties; to update the HTML to include that string.
- It will check if properties are present before adding to the HTML string
+  This function will get a random quote object from the quotes array.
+  Then assemble a string of HTML and quote properties; to update the HTML to include that string.
+  It will check if properties are present before adding to the HTML string
 */
 function printQuote() {
   document.body.style.backgroundColor = randomColorBackground();
@@ -83,7 +83,7 @@ function printQuote() {
   let html = ' ';
   html +=
     `<p class="quote">${randomQuote.quote}</p>
-     <p class="source"><strong>${randomQuote.source}</strong>`
+    <p class="source"><strong>${randomQuote.source}</strong>`
 
   if ( randomQuote.citation ) {
     html += `<span class="citation"><em>${randomQuote.citation}</em></span>`;
